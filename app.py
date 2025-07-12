@@ -12,7 +12,7 @@ st.sidebar.markdown("📁 Homepage")
 
 menu = st.sidebar.selectbox("Pilih Halaman", ["Home", "About", "Contact"])
 
-fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Elements of The Periodic Table"])
+fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Periodic Table"])
 
 
 # Konten berdasarkan pilihan menu
