@@ -14,24 +14,21 @@ placeholder = st.empty()
 st.sidebar.markdown("📁 Homepage")
 
 # Sidebar selectbox
-menu = st.sidebar.selectbox("Homepage", ["(Tidak Aktif)", "Home", "About", "Contact"])
+menu = st.sidebar.selectbox("Homepage",  ("Home", "About", "Contact"])
 
 # Sidebar next selectbox 1
-fitur = st.sidebar.selectbox("🔬 Chem Elements", ["(Tidak Aktif)", "Elements", "Periodic Table"])
+fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Elements", "Periodic Table"])
 
 # Konten berdasarkan pilihan menu
 if menu == "About":
-    st.markdown("---")
     st.header("ℹ️ About")
     st.write("This website is created to fulfill a project assignment. Chemistry is fascinating!")
 elif menu == "Contact":
-    st.markdown("---")
     st.header("📞 Contact")
     st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
 
 # For Sidebar next selectbox 1
 if fitur == "Periodic Table":
-    st.markdown("---")
     st.header("🧪 Periodic Table")
     st.write("Here's The Periodic Table – all elements")
 
