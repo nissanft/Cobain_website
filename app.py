@@ -7,6 +7,8 @@ st.set_page_config(page_title="Chemistry Side ⚗️", page_icon="🧪", layout=
 # Judul utama
 st.title("Welcome to Chemistry Side ⚗️")
 
+placeholder = st.empty()
+
 # Sidebar untuk menu navigasi
 st.sidebar.markdown("📁 Homepage")
 
