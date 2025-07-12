@@ -16,7 +16,7 @@ st.sidebar.markdown("📁 Homepage")
 menu = st.sidebar.selectbox("Pilih Halaman", [("Belum dipilih"), "Home", "About", "Contact"])
 
 # Sidebar next selectbox 1
-fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Periodic Table"])
+fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Belum dipilih"), "Periodic Table"])
 
 # Konten berdasarkan pilihan menu
 if menu == "Home":
