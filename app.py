@@ -29,8 +29,11 @@ elif menu == "Contact":
 
 # For Sidebar next selectbox 1
 if fitur == "Periodic Table":
+    st.markdown("---")
     st.header("🧪 Periodic Table")
     st.write("Here's The Periodic Table – all elements")
+else: 
+    st.markdown("")  # Kosongkan jika fitur belum dipilih
     
 # Footer
 st.markdown("---")
