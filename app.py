@@ -14,7 +14,7 @@ placeholder = st.empty()
 st.sidebar.markdown("📁 Homepage")
 
 # Sidebar selectbox
-st.title.sidebar("Home")
+st.sidebar.title("Home")
 menu = st.sidebar.selectbox("Homepage", ["About", "Contact"])
 
 # Sidebar next selectbox 1
