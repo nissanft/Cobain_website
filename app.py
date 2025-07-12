@@ -14,8 +14,7 @@ placeholder = st.empty()
 st.sidebar.markdown("📁 Homepage")
 
 # Sidebar selectbox
-st.sidebar.title("Home")
-menu = st.sidebar.selectbox("Homepage", ["About", "Contact"])
+menu = st.sidebar.selectbox("Homepage", [("Home"), "About", "Contact"])
 
 # Sidebar next selectbox 1
 fitur = st.sidebar.selectbox("🔬 Chem Elements", [("Elements"), "Periodic Table"])
@@ -30,11 +29,8 @@ elif menu == "Contact":
 
 # For Sidebar next selectbox 1
 if fitur == "Periodic Table":
-    st.markdown("---")
     st.header("🧪 Periodic Table")
     st.write("Here's The Periodic Table – all elements")
-else: 
-    st.markdown("")  # Kosongkan jika fitur belum dipilih
     
 # Footer
 st.markdown("---")
