@@ -17,8 +17,6 @@ menu = st.sidebar.selectbox("Pilih Halaman", ["Home", "About", "Contact"])
 fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Periodic Table"])
 
 # Konten berdasarkan pilihan menu
-placeholder = st.empty()
-
 if menu == "Home":
     st.header("🏠 Home")
     st.write("This is your website's homepage. Let's explore the magic of chemistry!")
