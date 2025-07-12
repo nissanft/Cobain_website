@@ -13,6 +13,9 @@ st.sidebar.markdown("📁 Homepage")
 # Sidebar selectbox
 menu = st.sidebar.selectbox("Pilih Halaman", ["Home", "About", "Contact"])
 
+# Sidebar next selectbox 1
+fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Periodic Table"])
+
 # Konten berdasarkan pilihan menu
 if menu == "Home":
     st.header("🏠 Home")
@@ -23,9 +26,6 @@ elif menu == "About":
 elif menu == "Contact":
     st.header("📞 Contact")
     st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
-
-# Sidebar next selectbox 1
-fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Periodic Table"])
 
 # For Sidebar next selectbox 1
 if fitur == "Periodic Table":
