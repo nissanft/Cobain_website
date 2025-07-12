@@ -1,18 +1,18 @@
 import streamlit as st
 
 # Judul utama
-st.title("Selamat Datang di Website Nissa 💻")
+st.title("Welcome to Chemistry Side⚗️")
 
 # Sidebar untuk menu navigasi
-menu = st.sidebar.selectbox("Pilih Menu", ["Beranda", "Tentang", "Kontak"])
+menu = st.sidebar.selectbox("Select Menu", ["Home", "About", "Contact"])
 
 # Konten berdasarkan pilihan menu
-if menu == "Beranda":
-    st.header("🏠 Beranda")
-    st.write("Ini adalah halaman utama website kamu.")
-elif menu == "Tentang":
+if menu == "Home":
+    st.header("🏠 Home")
+    st.write("This is your website's.")
+elif menu == "About":
     st.header("ℹ️ Tentang")
-    st.write("Website ini dibuat menggunakan Python dan Streamlit.")
-elif menu == "Kontak":
-    st.header("📞 Kontak")
-    st.write("Hubungi saya di: nissa@example.com")
+    st.write("This website is created to fulfill a project assignment.")
+elif menu == "Contact":
+    st.header("📞 Contact")
+    st.write("Contact us : lpk's group")
