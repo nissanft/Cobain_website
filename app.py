@@ -22,7 +22,7 @@ elif menu == "About":
     st.write("This website is created to fulfill a project assignment. Chemistry is fascinating!")
 elif menu == "Contact":
     st.header("📞 Contact")
-    st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
+    st.write("Contact us: LPK's Group – we’re always up for a good science chat.");
 
 # Sidebar next selectbox 1
 fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Periodic Table"])
