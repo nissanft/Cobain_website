@@ -8,7 +8,8 @@ st.set_page_config(page_title="Chemistry Side ⚗️", page_icon="🧪", layout=
 st.title("Welcome to Chemistry Side ⚗️")
 
 # Sidebar untuk menu navigasi
-menu = st.sidebar.selectbox("📁 Pilih Menu", ["Home", "About", "Periodic Table", "Contact"])
+st.sidebar.selectbox.title("📁 Homepage")
+menu = st.sidebar.select["Home", "About", "Periodic Table", "Contact"])
 
 # Konten berdasarkan pilihan menu
 if menu == "Home":
@@ -20,7 +21,6 @@ elif menu == "About":
 elif menu == "Periodic Table":
     st.header("🧪 Periodic Table")
     st.write("Here's The Periodic Table – all elements from Hydrogen to Oganesson.")
-    st.image("https://www.ptable.com/images/periodic-table.png", caption="Dynamic Periodic Table", use_column_width=True)
 elif menu == "Contact":
     st.header("📞 Contact")
     st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
