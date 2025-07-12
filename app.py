@@ -4,7 +4,8 @@ import streamlit as st
 st.title("Welcome to Chemistry Side⚗️")
 
 # Sidebar untuk menu navigasi
-menu = st.sidebar.selectbox("Select Menu", ["Home", "About", "Contact"])
+menu = st.sidebar.selectbox("Homepage", ["Home", "About", "Contact"])
+menu = st.sidebar.selectbox("Homepage", ["Periodik Unsur"])
 
 # Konten berdasarkan pilihan menu
 if menu == "Home":
@@ -16,3 +17,6 @@ elif menu == "About":
 elif menu == "Contact":
     st.header("📞 Contact")
     st.write("Contact us : lpk's group")
+if menu == "Periodik Unsur":
+    st.header("The Elements of The Periodic Table ˗ˏˋ꒰𖦹｡🧪⋆°✰꒱ ˎˊ˗")
+    st.write("Here's The Periodic Table")
