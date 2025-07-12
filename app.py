@@ -3,10 +3,10 @@ from PIL import Image
 
 # Konfigurasi halaman
 st.set_page_config(page_title="Chemistry Side ⚗️", page_icon="🧪", layout="centered")
-st.write("This is your website's homepage. Let's explore the magic of chemistry!")
 
 # Judul utama
 st.title("Welcome to Chemistry Side ⚗️")
+st.write("This is your website's homepage. Let's explore the magic of chemistry!")
 
 placeholder = st.empty()
 
