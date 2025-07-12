@@ -14,10 +14,10 @@ placeholder = st.empty()
 st.sidebar.markdown("📁 Dashboard")
 
 # Sidebar selectbox
-menu = st.sidebar.selectbox["Homepage", "About", "Contact"]
+menu = st.sidebar.selectbox("Homepage", ["Homepage", "About", "Contact"])
 
 # Sidebar next selectbox 1
-fitur = st.sidebar.selectbox["🔬 Chem Elements", "Periodic Table"]
+fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Elements", "Periodic Table"])
 
 # Konten berdasarkan pilihan menu
 if menu == "About":
