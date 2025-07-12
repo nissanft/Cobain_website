@@ -3,6 +3,7 @@ from PIL import Image
 
 # Konfigurasi halaman
 st.set_page_config(page_title="Chemistry Side ⚗️", page_icon="🧪", layout="centered")
+st.write("This is your website's homepage. Let's explore the magic of chemistry!")
 
 # Judul utama
 st.title("Welcome to Chemistry Side ⚗️")
@@ -16,13 +17,10 @@ st.sidebar.markdown("📁 Homepage")
 menu = st.sidebar.selectbox("Homepage", [("Home"), "About", "Contact"])
 
 # Sidebar next selectbox 1
-fitur = st.sidebar.selectbox("🔬 Chem Elements", [("Periodic Table")])
+fitur = st.sidebar.selectbox("🔬 Chem Elements", [("Elements)", "Periodic Table"])
 
 # Konten berdasarkan pilihan menu
-if menu == "Home":
-    st.header("🏠 Home")
-    st.write("This is your website's homepage. Let's explore the magic of chemistry!")
-elif menu == "About":
+if menu == "About":
     st.header("ℹ️ About")
     st.write("This website is created to fulfill a project assignment. Chemistry is fascinating!")
 elif menu == "Contact":
