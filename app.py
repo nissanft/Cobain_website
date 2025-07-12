@@ -11,26 +11,26 @@ st.title("Welcome to Chemistry Side ⚗️")
 st.sidebar.markdown("📁 Homepage")
 
 # Sidebar selectbox
-menu = st.sidebar.selectbox("Pilih Halaman", ["Home", "About", "Contact"])
+menu = st.sidebar.selectbox("Pilih Halaman", ["Home", "About", "Contact"]);
 
 # Konten berdasarkan pilihan menu
 if menu == "Home":
     st.header("🏠 Home")
-    st.write("This is your website's homepage. Let's explore the magic of chemistry!")
+    st.write("This is your website's homepage. Let's explore the magic of chemistry!");
 elif menu == "About":
     st.header("ℹ️ About")
-    st.write("This website is created to fulfill a project assignment. Chemistry is fascinating!")
+    st.write("This website is created to fulfill a project assignment. Chemistry is fascinating!");
 elif menu == "Contact":
     st.header("📞 Contact")
     st.write("Contact us: LPK's Group – we’re always up for a good science chat.");
 
 # Sidebar next selectbox 1
-fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Periodic Table"])
+fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Periodic Table"]);
 
 # For Sidebar next selectbox 1
 if fitur == "Periodic Table":
     st.header("🧪 Periodic Table")
-    st.write("Here's The Periodic Table – all elements")
+    st.write("Here's The Periodic Table – all elements");
     
 # Footer
 st.markdown("---")
