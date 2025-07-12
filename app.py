@@ -33,7 +33,7 @@ if fitur == "Periodic Table":
     st.write("Here's The Periodic Table – all elements")
 
 # Jika "(Tidak Aktif)" dipilih, sembunyikan semua fitur
-elif fitur == "(Tidak Aktif)":
+elif fitur == "(Home)":
     pass  # Tidak menampilkan fitur apapun
 
 # Footer
