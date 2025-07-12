@@ -31,7 +31,11 @@ elif menu == "Contact":
 if fitur == "Periodic Table":
     st.header("🧪 Periodic Table")
     st.write("Here's The Periodic Table – all elements")
-    
+
+# Jika "(Tidak Aktif)" dipilih, sembunyikan semua fitur
+elif fitur == "(Tidak Aktif)":
+    pass  # Tidak menampilkan fitur apapun
+
 # Footer
 st.markdown("---")
 st.markdown("<p style='text-align: center;'>© 2025 Chemistry Side ⚗️ Created with 💙 and Python.</p>", unsafe_allow_html=True)
