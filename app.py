@@ -8,8 +8,9 @@ st.set_page_config(page_title="Chemistry Side ⚗️", page_icon="🧪", layout=
 st.title("Welcome to Chemistry Side ⚗️")
 
 # Sidebar untuk menu navigasi
-st.sidebar.selectbox.title("📁 Homepage")
-menu = st.sidebar.select(["Home", "About", "Periodic Table", "Contact"])
+st.sidebar.markdown("📁 Homepage")
+menu = st.sidebar.selectbox(["Home", "About", "Periodic Table", "Contact"])
+menu = st.sidebar.selectbox(["Periodic Unsur", "Elements of The Periodic Table"])
 
 # Konten berdasarkan pilihan menu
 if menu == "Home":
