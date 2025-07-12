@@ -9,8 +9,8 @@ st.title("Welcome to Chemistry Side ⚗️")
 
 # Sidebar untuk menu navigasi
 st.sidebar.markdown("📁 Homepage")
-menu = st.sidebar.selectbox(["Home", "About", "Periodic Table", "Contact"])
-fitur = st.sidebar.selectbox(["Periodic Unsur", "Elements of The Periodic Table"])
+menu = st.sidebar.selectbox(["Home", "About", "Contact"])
+fitur = st.sidebar.selectbox("🔬 Periodic Unsur", ["Elements of The Periodic Table"])
 
 # Konten berdasarkan pilihan menu
 if menu == "Home":
