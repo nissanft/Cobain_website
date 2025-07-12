@@ -5,7 +5,7 @@ st.title("Welcome to Chemistry Side⚗️")
 
 # Sidebar untuk menu navigasi
 menu = st.sidebar.selectbox("Homepage", ["Home", "About", "Contact"])
-menu = st.sidebar.selectbox("Homepage", ["Periodik Unsur"])
+menu = st.sidebar.selectbox ["Periodik Unsur"]
 
 # Konten berdasarkan pilihan menu
 if menu == "Home":
