@@ -17,7 +17,7 @@ st.sidebar.markdown("📁 Dashboard")
 menu = st.sidebar.selectbox("Homepage", ["Homepage", "About", "Contact"])
 
 # Sidebar next selectbox 1
-fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Elements", "Periodic Table"])
+fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Element", "Periodic Table"])
 
 # Konten berdasarkan pilihan menu
 if menu == "About":
