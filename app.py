@@ -5,7 +5,6 @@ st.title("Welcome to Chemistry Side⚗️")
 
 # Sidebar untuk menu navigasi
 menu = st.sidebar.selectbox("Homepage", ["Home", "About", "Contact"])
-menu = st.sidebar.selectbox ["Periodik Unsur"]
 
 # Konten berdasarkan pilihan menu
 if menu == "Home":
@@ -17,6 +16,9 @@ elif menu == "About":
 elif menu == "Contact":
     st.header("📞 Contact")
     st.write("Contact us : lpk's group")
+
+menu = st.sidebar.selectbox (["Periodik Unsur"])
+
 if menu == "Periodik Unsur":
-    st.header("The Elements of The Periodic Table ˗ˏˋ꒰𖦹｡🧪⋆°✰꒱ ˎˊ˗")
+    st.header("The Elements of The Periodic Table 🧪 ˗ˏˋ꒰𖦹｡")
     st.write("Here's The Periodic Table")
