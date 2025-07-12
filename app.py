@@ -10,10 +10,11 @@ st.title("Welcome to Chemistry Side ⚗️")
 # Sidebar untuk menu navigasi
 st.sidebar.markdown("📁 Homepage")
 
+# Sidebar selectbox
 menu = st.sidebar.selectbox("Pilih Halaman", ["Home", "About", "Contact"])
 
+# Sidebar next selectbox 1
 fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Periodic Table"])
-
 
 # Konten berdasarkan pilihan menu
 if menu == "Home":
@@ -22,13 +23,15 @@ if menu == "Home":
 elif menu == "About":
     st.header("ℹ️ About")
     st.write("This website is created to fulfill a project assignment. Chemistry is fascinating!")
-elif menu == "Periodic Table":
-    st.header("🧪 Periodic Table")
-    st.write("Here's The Periodic Table – all elements from Hydrogen to Oganesson.")
 elif menu == "Contact":
     st.header("📞 Contact")
     st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
 
+# For Sidebar next selectbox 1
+if fitur == "Periodic Table":
+    st.header("🧪 Periodic Table")
+    st.write("Here's The Periodic Table – all elements")
+    
 # Footer
 st.markdown("---")
 st.markdown("<p style='text-align: center;'>© 2025 Chemistry Side ⚗️ Created with 💙 and Python.</p>", unsafe_allow_html=True)
