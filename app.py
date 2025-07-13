@@ -30,9 +30,6 @@ elif menu == "Contact":
 # Daftar halaman yang tersedia
 pages = ["Periodic Table", "Calculator Mass"]
 
-#For next Sidebar
-st.markdown("Here's The Periodic Table – all elements")
-
 # Validasi dan set default halaman
 if 'page' not in st.query_params or st.query_params.page not in pages:
     st.query_params.page = "Periodic Table"
@@ -45,6 +42,9 @@ page = st.sidebar.radio(
     pages,
     key="page_selector",
     index=default_index
+if page == "Periodic Table":
+    st.header("🧪 Periodic Table")
+    st.markdown("Here's The Periodic Table – all elements")
 )
 
 # Jika terjadi perubahan halaman, perbarui query dan bersihkan parameter lainnya
