@@ -16,7 +16,7 @@ st.write("This is your website's homepage. Let's explore the magic of chemistry!
 st.sidebar.markdown("📁 Dashboard")
 
 #Sidebar selectbox
-menu = st.sidebar.selectbox("Homepage", ["Homepage", "About", "Contact"])
+menu = st.selectbox["Homepage", "About", "Contact"]
 
 #Konten berdasarkan pilihan menu
 if menu == "About":
