@@ -34,7 +34,7 @@ if fitur == "Periodic Table":
 
 # Routing Halaman
     if page == "Homepage":
-        landing_page()
+        homepage_page()
     elif page == "About":
         about_page()
     elif page == "Contact":
