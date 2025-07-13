@@ -32,16 +32,19 @@ if fitur == "Periodic Table":
     st.header("🧪 Periodic Table")
     st.write("Here's The Periodic Table – all elements")
 
-# Routing Halaman
+def route_page(page, fitur):
     if page == "Homepage":
         homepage_page()
     elif page == "About":
         about_page()
     elif page == "Contact":
         contact_page()
+
     if fitur == "Element":
         element_page()
 
+# Panggil fungsi dengan nilai dari query parameter
+route_page(page, fitur)
 
 # Footer
 st.markdown("---")
