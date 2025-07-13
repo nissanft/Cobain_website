@@ -32,6 +32,16 @@ if fitur == "Periodic Table":
     st.header("🧪 Periodic Table")
     st.write("Here's The Periodic Table – all elements")
 
+# Routing Halaman
+    if page == "Homepage":
+        landing_page()
+    elif page == "About":
+        about_page()
+    elif page == "Contact":
+        contact_page()
+    if fitur == "Element":
+        element_page()
+
 
 # Footer
 st.markdown("---")
