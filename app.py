@@ -22,26 +22,17 @@ menu = st.sidebar.selectbox("Homepage", ["Homepage", "About", "Contact"])
 fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Element", "Periodic Table"])
 
 """Konten berdasarkan pilihan menu"""
-if menu == "About":
+if selected_menu == "About":
     st.header("ℹ️ About")
     st.write("This website is created to fulfill a project assignment. Chemistry is fascinating!")
-elif menu == "Contact":
+elif selected_menu == "Contact":
     st.header("📞 Contact")
     st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
 
 """For Sidebar next selectbox 1"""
-if fitur == "Periodic Table":
+if selected_fitur == "Periodic Table":
     st.header("🧪 Periodic Table")
     st.write("Here's The Periodic Table – all elements")
-
-if page == "Beranda":
-        landing_page()
-    elif page == "Tabel Periodik":
-        periodic_table_page()
-    elif page == "Kalkulator Kimia":
-        calculator_page()
-    elif page == "Informasi Kimia":
-        about_page()
 
 # Footer
 st.markdown("---")
