@@ -27,7 +27,6 @@ elif menu == "Contact":
     st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
 
 #For next Sidebar
-st.sidebar.title("🔬 Chem Elements")
 st.write("Here's The Periodic Table – all elements")
 
 # Daftar halaman yang tersedia
