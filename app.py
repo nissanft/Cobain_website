@@ -42,10 +42,16 @@ page = st.sidebar.radio(
     pages,
     key="page_selector",
     index=default_index
+)
+
+# Tampilkan konten berdasarkan pilihan halaman
 if page == "Periodic Table":
     st.header("🧪 Periodic Table")
     st.markdown("Here's The Periodic Table – all elements")
-)
+
+elif page == "Calculator Mass":
+    st.header("🧮 Calculator Mass")
+    st.write("Masukkan data untuk menghitung massa molar.")
 
 # Jika terjadi perubahan halaman, perbarui query dan bersihkan parameter lainnya
 if st.query_params.page != page:
