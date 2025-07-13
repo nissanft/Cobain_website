@@ -35,13 +35,26 @@ def tampilkan_fitur(fitur):
     if fitur == "Periodic Table":
         st.header("🧪 Periodic Table")
         st.write("Here's The Periodic Table – all elements")
-    
-    query = st.query_params
+
+# Ambil query params
+query = st.query_params
 menu = query.get("menu", "About")
 fitur = query.get("fitur", "Periodic Table")
 
-tampilkan_menu(menu)
-tampilkan_fitur(fitur)
+# Sidebar interaktif
+selected_menu = st.sidebar.selectbox("Pilih Menu", ["About", "Contact"], index=["About", "Contact"].index(menu))
+selected_fitur = st.sidebar.selectbox("Pilih Fitur", ["Periodic Table"], index=0)
+
+# Update query params jika ada perubahan
+if selected_menu != menu or selected_fitur != fitur:
+    st.query_params.update({
+        "menu": selected_menu,
+        "fitur": selected_fitur
+    })
+
+# Tampilkan konten
+tampilkan_menu(selected_menu)
+tampilkan_fitur(selected_fitur)
 
 
 # Footer
