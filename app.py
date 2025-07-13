@@ -27,26 +27,33 @@ elif menu == "Contact":
     st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
 
 #For next Sidebar
-fitur = st.sidebar.title("🔬 Chem Elements")
+st.sidebar.title("🔬 Chem Elements")
 st.write("Here's The Periodic Table – all elements")
+
+# Daftar halaman yang tersedia
 pages = ["Periodic Table"]
+
+# Validasi dan set default halaman
 if 'page' not in st.query_params or st.query_params.page not in pages:
-        st.query_params.page = "Periodic Table"
+    st.query_params.page = "Periodic Table"
 
-    default_index = pages.index(st.query_params.page)
+default_index = pages.index(st.query_params.page)
 
-    page = st.sidebar.radio(
-        "🔬 Chem Elements",
-        pages,
-        key="page_selector",
-        index=default_index
-    )
+# Komponen radio di sidebar untuk navigasi halaman
+page = st.sidebar.radio(
+    "🔬 Chem Elements",
+    pages,
+    key="page_selector",
+    index=default_index
+)
+
+# Jika terjadi perubahan halaman, perbarui query dan bersihkan parameter lainnya
 if st.query_params.page != page:
-        st.query_params.page = page
-        keys_to_clear = [k for k in st.query_params if k != 'page']
-        for k in keys_to_clear:
-            del st.query_params[k]
-        st.rerun()
+    st.query_params.page = page
+    keys_to_clear = [k for k in st.query_params if k != 'page']
+    for k in keys_to_clear:
+        del st.query_params[k]
+    st.rerun()
 
 # Footer
 st.markdown("---")
