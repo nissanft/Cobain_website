@@ -26,11 +26,12 @@ elif menu == "Contact":
     st.header("📞 Contact")
     st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
 
-#For next Sidebar
-st.markdown("Here's The Periodic Table – all elements")
 
 # Daftar halaman yang tersedia
 pages = ["Periodic Table", "Calculator Mass"]
+
+#For next Sidebar
+st.markdown("Here's The Periodic Table – all elements")
 
 # Validasi dan set default halaman
 if 'page' not in st.query_params or st.query_params.page not in pages:
