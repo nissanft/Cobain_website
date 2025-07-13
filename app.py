@@ -20,17 +20,19 @@ menu = st.sidebar.selectbox("Homepage", ["Homepage", "About", "Contact"])
 fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Element", "Periodic Table"])
 
 #Konten berdasarkan pilihan menu
-if menu == "About":
-    st.header("ℹ️ About")
-    st.write("This website is created to fulfill a project assignment. Chemistry is fascinating!")
-elif menu == "Contact":
-    st.header("📞 Contact")
-    st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
+elif menu:
+    if menu == "About":
+        st.header("ℹ️ About")
+        st.write("This website is created to fulfill a project assignment. Chemistry is fascinating!")
+    elif menu == "Contact":
+        st.header("📞 Contact")
+        st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
 
 #For Sidebar next selectbox 1
-elif fitur == "Periodic Table":
-    st.header("🧪 Periodic Table")
-    st.write("Here's The Periodic Table – all elements")
+if fitur:
+    if fitur == "Periodic Table":
+        st.header("🧪 Periodic Table")
+        st.write("Here's The Periodic Table – all elements")
 
 
 # Footer
