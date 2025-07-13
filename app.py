@@ -28,7 +28,7 @@ elif menu == "Contact":
     st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
 
 #For Sidebar next selectbox 1
-if fitur == "Periodic Table":
+elif fitur == "Periodic Table":
     st.header("🧪 Periodic Table")
     st.write("Here's The Periodic Table – all elements")
 
