@@ -12,8 +12,6 @@ st.set_page_config(page_title="Chemistry Side ⚗️", page_icon="🧪", layout=
 st.title("Welcome to Chemistry Side ⚗️")
 st.write("This is your website's homepage. Let's explore the magic of chemistry!")
 
-placeholder = st.empty()
-
 """Sidebar untuk menu navigasi"""
 st.sidebar.markdown("📁 Dashboard")
 
