@@ -19,12 +19,6 @@ st.sidebar.markdown("📁 Dashboard")
 menu = st.sidebar.selectbox("Homepage", ["Homepage", "About", "Contact"])
 fitur = st.sidebar.selectbox("🔬 Chem Elements", ["Element", "Periodic Table"])
 
-#For Sidebar next selectbox 1
-if fitur != "":
-    if fitur == "Periodic Table":
-        st.header("🧪 Periodic Table")
-        st.write("Here's The Periodic Table – all elements")
-
 #Konten berdasarkan pilihan menu
 elif menu != "":
     if menu == "About":
@@ -33,6 +27,12 @@ elif menu != "":
     elif menu == "Contact":
         st.header("📞 Contact")
         st.write("Contact us: LPK's Group – we’re always up for a good science chat.")
+
+#For Sidebar next selectbox 1
+if fitur != "":
+    if fitur == "Periodic Table":
+        st.header("🧪 Periodic Table")
+        st.write("Here's The Periodic Table – all elements")
 
 # Footer
 st.markdown("---")
