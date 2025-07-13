@@ -32,17 +32,6 @@ if fitur == "Periodic Table":
     st.header("🧪 Periodic Table")
     st.write("Here's The Periodic Table – all elements")
 
-def route_page(page, fitur):
-    if page == "Homepage":
-        homepage_page()
-    elif page == "About":
-        about_page()
-    elif page == "Contact":
-        contact_page()
-
-    if fitur == "Element":
-        element_page()
-
 
 # Footer
 st.markdown("---")
