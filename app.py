@@ -43,8 +43,6 @@ def route_page(page, fitur):
     if fitur == "Element":
         element_page()
 
-# Panggil fungsi dengan nilai dari query parameter
-route_page(page, fitur)
 
 # Footer
 st.markdown("---")
