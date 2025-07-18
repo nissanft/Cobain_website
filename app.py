@@ -497,11 +497,10 @@ menu = st.sidebar.selectbox(
 if menu =="Beranda":
     st.title("Kalkulator Kimia Dasar")
     st.header("Pengertian Kimia")
-   
-#--- Menu Tabel Periodik Unsur ---
-if menu =="Tabel Periodik Unsur":                               
 
-elif menu == "Kalkulator Kimia Dasar":
+
+#--- Menu Tabel Periodik Unsur ---
+if menu == "Kalkulator Kimia Dasar":
     st.title("Kalkulator Kimia Dasar")
     st.subheader("Pilih Rumus yang Akan Dihitung")
 
