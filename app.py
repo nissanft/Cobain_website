@@ -340,7 +340,7 @@ def element_details_view(symbol):
             st.metric(label="Periode", value=data.get('period', 'N/A'))
 
         category_name = data['category'].replace('-', ' ').title()
-        st.info(f"**Kategori:** {category_name}")
+        st.info(f"*Kategori:* {category_name}")
         
         st.write("---")
         if st.button("Kembali ke Tabel Periodik"):
@@ -351,18 +351,18 @@ def element_details_view(symbol):
 def display_calculation_breakdown(formula, atom_counts, total_mass):
     """Membuat expander untuk menampilkan rincian perhitungan."""
     with st.expander("Lihat Rincian Perhitungan"):
-        st.markdown(f"#### Perhitungan untuk **{formula}**")
+        st.markdown(f"#### Perhitungan untuk *{formula}*")
         
         calculation_steps = []
         for atom, count in sorted(atom_counts.items()):
             atomic_mass = ELEMENTS_DATA[atom]['mass']
             step_total = atomic_mass * count
-            calculation_steps.append(f"- **{count}** atom **{atom}** &times; `{atomic_mass:.4f}` = `{step_total:.4f}`")
+            calculation_steps.append(f"- *{count}* atom *{atom}* &times; {atomic_mass:.4f} = {step_total:.4f}")
         
         st.markdown("\n".join(calculation_steps))
         
         st.markdown("---")
-        st.markdown(f"**Total Massa Molar** = **`{total_mass:.4f} g/mol`**")
+        st.markdown(f"*Total Massa Molar* = **{total_mass:.4f} g/mol**")
 
 # =================================================================================
 # DEFINISI HALAMAN
@@ -370,15 +370,15 @@ def display_calculation_breakdown(formula, atom_counts, total_mass):
 
 def landing_page():
     """Fungsi untuk merender halaman utama (Beranda)."""
-    st.title("Selamat Datang di Aplikasi Kimia Interaktif ⚛️")
+    st.title("Selamat Datang di Aplikasi Kimia Interaktif ⚛")
     st.markdown("""
     Aplikasi ini adalah pusat sumber daya Anda untuk menjelajahi dunia kimia yang menakjubkan. Baik Anda seorang siswa yang baru memulai, seorang guru yang mencari alat bantu ajar, atau hanya seorang yang penasaran, Anda akan menemukan alat yang berguna di sini.
 
-    **Gunakan navigasi di sebelah kiri untuk memulai:**
+    *Gunakan navigasi di sebelah kiri untuk memulai:*
 
-    - **Tabel Periodik**: Jelajahi tabel periodik interaktif, klik pada unsur untuk melihat detailnya.
-    - **Kalkulator Kimia**: Hitung massa molar senyawa dengan cepat.
-    - **Informasi Kimia**: Baca pengantar singkat tentang konsep-konsep dasar kimia.
+    - *Tabel Periodik*: Jelajahi tabel periodik interaktif, klik pada unsur untuk melihat detailnya.
+    - *Kalkulator Kimia*: Hitung massa molar senyawa, rumus empiris dan konsentrasi larutan(Molaritas) dengan cepat.
+    - *Informasi Kimia*: Baca pengantar singkat tentang konsep-konsep dasar kimia.
 
     Selamat belajar dan bereksplorasi!
     """)
@@ -398,48 +398,91 @@ def periodic_table_page():
 
 def calculator_page():
     """Fungsi untuk merender halaman Kalkulator Kimia."""
-    st.title("🧮 Kalkulator Massa Molar")
-    st.markdown("Masukkan rumus kimia dari sebuah senyawa untuk menghitung massa molarnya.")
-    
-    formula = st.text_input(
-        "Masukkan Rumus Kimia (contoh: H2O, C6H12O6, Mg(OH)2)",
-        key="formula_input"
-    )
-    if st.button("Hitung Massa Molar"):
-        if formula:
+    st.title("🧮 Kalkulator Kimia Interaktif")
+
+    tab1, tab2, tab3 = st.tabs(["Massa Molar", "Rumus Empiris", "Konsentrasi Larutan(Molaritas)"])
+
+    with tab1:
+        st.subheader("🔬 Kalkulator Massa Molar")
+        formula = st.text_input("Masukkan Rumus Kimia (contoh: H2O, C6H12O6)", key="molar_input")
+        if st.button("Hitung Massa Molar"):
             try:
                 atom_counts = parse_formula(formula)
                 total_mass = calculate_molar_mass(atom_counts)
-                
-                st.success(f"**Massa Molar dari {formula} adalah:** `{total_mass:.4f} g/mol`")
+                st.success(f"Massa molar dari {formula} adalah {total_mass:.4f} g/mol")
                 display_calculation_breakdown(formula, atom_counts, total_mass)
-
-            except ValueError as e:
-                st.error(f"Error: {e}. Periksa kembali rumus Anda.")
             except Exception as e:
-                st.error(f"Terjadi kesalahan tak terduga: {e}")
-        else:
-            st.warning("Silakan masukkan rumus kimia terlebih dahulu.")
+                st.error(f"Terjadi kesalahan: {e}")
 
+    with tab2:
+        st.subheader("🧪 Hitung Rumus Empiris")
+        st.markdown("Masukkan unsur dan massa masing-masing (misal: C = 12, H = 2, O = 16)")
+        elements_input = st.text_area("Data Massa Unsur (Format: C=12, H=2, O=16)", key="empirical_input")
+
+        if st.button("Hitung Rumus Empiris"):
+            try:
+                pairs = elements_input.split(",")
+                data = {}
+                for p in pairs:
+                    el, mass = p.strip().split("=")
+                    el, mass = el.strip(), float(mass.strip())
+                    if el not in ELEMENTS_DATA:
+                        raise ValueError(f"Unsur tidak dikenal: {el}")
+                    data[el] = mass / ELEMENTS_DATA[el]['mass']  # mol
+
+                min_mol = min(data.values())
+                ratio = {k: round(v / min_mol + 1e-2) for k, v in data.items()}  # bulatkan mendekati bilangan bulat
+
+                st.success(f"Rumus empiris adalah: {''.join(f'{k}{v if v > 1 else ""}' for k,v in ratio.items())}")
+
+            except Exception as e:
+                st.error(f"Kesalahan input: {e}")
+
+    with tab3:
+        st.subheader("🥼 Kalkulator Konsentrasi Larutan (Molaritas)")
+        massa = st.number_input("Masukkan massa zat (gram):", min_value=0.0, format="%.4f", key="massa_zat")
+        formula_konsentrasi = st.text_input("Masukkan rumus kimia zat (misal: NaCl, H2SO4)", key="rumus_zat")
+        volume = st.number_input("Masukkan volume larutan (liter):", min_value=0.0001, format="%.4f", key="volume_larutan")
+
+        if st.button("Hitung Konsentrasi"):
+            try:
+                atom_counts = parse_formula(formula_konsentrasi)
+                molar_mass = calculate_molar_mass(atom_counts)
+                mol = massa / molar_mass
+                konsentrasi = mol / volume
+
+                st.success(f"Konsentrasi larutan adalah {konsentrasi:.4f} mol/L")
+                st.markdown(f"Jumlah mol: {mol:.4f} mol")
+                st.markdown(f"Massa molar dari {formula_konsentrasi}: {molar_mass:.4f} g/mol")
+            except Exception as e:
+                st.error(f"Kesalahan: {e}")
+                
 def about_page():
     """Fungsi untuk merender halaman 'Informasi Kimia'."""
     st.title("📖 Informasi Dasar Kimia")
     st.markdown("""
-    Kimia adalah studi tentang materi, sifat-sifatnya, bagaimana dan mengapa zat bergabung atau terpisah untuk membentuk zat lain, dan bagaimana zat berinteraksi dengan energi.
+    Kimia adalah cabang ilmu sains yang mempelajari tentang materi, komposisi, struktur, sifat, dan perubahan yang terjadi pada zat. Kimia menjelaskan bagaimana atom dan molekul berinteraksi satu sama lain, baik dalam proses alami maupun buatan manusia. Hampir semua yang ada di sekitar kita seperti makanan, air, obat-obatan, bahan bangunan, bahkan udara yang kita hirup melibatkan reaksi kimia.
+
+    Ilmu kimia tidak hanya penting dalam dunia laboratorium, tetapi juga sangat berperan dalam bidang farmasi, pertanian, kesehatan, lingkungan, teknologi, dan industri. Dengan memahami dasar-dasar kimia, kita dapat membuat keputusan yang lebih baik terkait produk yang kita gunakan dan proses yang kita temui dalam kehidupan sehari-hari.
 
     ### Konsep Kunci
-    - **Atom**: Unit dasar materi yang terdiri dari inti pusat (proton dan neutron) yang dikelilingi oleh awan elektron. Setiap unsur kimia dicirikan oleh jumlah proton di dalam atomnya.
-    - **Unsur**: Zat murni yang hanya terdiri dari atom-atom yang semuanya memiliki jumlah proton yang sama di dalam inti atomnya. Unsur-unsur diatur dalam Tabel Periodik.
-    - **Molekul**: Partikel yang terdiri dari dua atau lebih atom yang terikat secara kimia. Molekul bisa terdiri dari atom unsur yang sama (seperti O₂) atau atom dari unsur yang berbeda (seperti H₂O).
-    - **Senyawa**: Zat yang terbentuk ketika dua atau lebih unsur kimia yang berbeda terikat secara kimia dalam perbandingan tetap. Contohnya adalah air (H₂O) dan garam dapur (NaCl).
-    - **Massa Molar**: Massa dari satu mol suatu zat. Ini adalah properti fisik yang penting dalam stoikiometri dan perhitungan kimia lainnya. Satuannya biasanya gram per mol (g/mol).
+    - Atom: Unit dasar materi yang terdiri dari proton, neutron, dan elektron.
+    - Unsur: Zat murni yang terdiri dari satu jenis atom, disusun dalam tabel periodik.
+    - Molekul: Gabungan dua atau lebih atom yang terikat secara kimia.
+    - Senyawa: Zat yang tersusun dari dua atau lebih unsur dalam perbandingan tertentu.
+    - Massa Molar: Jumlah massa dalam gram dari satu mol zat (g/mol).
+    - Rumus Empiris: Rumus paling sederhana dari suatu senyawa berdasarkan perbandingan mol antar unsur.
+    - Konsentrasi Larutan (Molaritas): Ukuran konsentrasi larutan dalam mol zat terlarut per liter larutan (mol/L).
 
     ### Tentang Aplikasi Ini
-    Aplikasi ini dibuat untuk menyediakan alat yang mudah diakses untuk:
-    1.  **Mempelajari Unsur**: Dengan tabel periodik yang interaktif.
-    2.  **Melakukan Perhitungan**: Dengan kalkulator massa molar yang praktis.
-    
-    Semoga dapat membantu perjalanan belajar kimia Anda!
+    Aplikasi ini dirancang sebagai alat bantu belajar dan praktikum digital untuk memudahkan pengguna memahami dan menghitung konsep-konsep dasar dalam kimia. Fitur-fitur utama yang tersedia antara lain:
+    1.  Tabel Periodik Interaktif: Menyediakan informasi lengkap tiap unsur (nama, nomor atom, massa atom, golongan, dll).
+    2.  Kalkulator Kimia:
+        - Massa Molar: Menghitung massa molar senyawa dari rumus kimianya.
+        - Rumus Empiris: Menentukan rumus empiris dari data massa unsur.
+        - Konsentrasi Larutan (Molaritas): Menghitung mol dan konsentrasi berdasarkan massa dan volume.
+
+    Diharapkan aplikasi ini dapat menjadi sarana belajar yang menyenangkan, praktis, dan informatif, baik untuk pelajar, guru, maupun siapa saja yang tertarik dengan ilmu kimia.
     """)
 
 # =================================================================================
@@ -483,122 +526,29 @@ def main():
     elif page == "Informasi Kimia":
         about_page()
 
-if __name__ == "__main__":
+# Watermark sticky di bagian bawah layar
+    st.markdown(
+        """
+        <style>
+        .watermark-fixed {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-weight: bold;
+            z-index: 100;
+        }
+        </style>
+        <div class="watermark-fixed">
+            © 2025 POLITEKNIK AKA BOGOR - D3 Analisis Kimia.
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+if _name_ == "_main_":
     main()
-import streamlit as st
-
-#Sidebar Menu
-menu = st.sidebar.selectbox(
-    "Pilih menu",
-    ["Beranda","Kalkulator Kimia Dasar","Tabel Periodik Unsur","Soal-soal Kimia Dasar","Catatan"]
-)
-
-# ---Menu BERANDA ---
-if menu =="Beranda":
-    st.title("Kalkulator Kimia Dasar")
-    st.header("Pengertian Kimia")
-
-
-#--- Menu Tabel Periodik Unsur ---
-if menu == "Kalkulator Kimia Dasar":
-    st.title("Kalkulator Kimia Dasar")
-    st.subheader("Pilih Rumus yang Akan Dihitung")
-
-    rumus = st.selectbox("Pilih Rumus", [
-        "Massa Jenis",
-        "Massa Mol",
-        "Konsentrasi Molar",
-        "Konsentrasi Molal",
-        "Hukum Avogadro",
-        "Hukum Boyle",
-        "Hukum Charles",
-        "Tekanan Gas Ideal",
-        "Energi Ikatan",
-        "Persen Massa"
-    ])
-
-    if rumus == "Massa Jenis":
-        massa = st.number_input("Massa (gram)")
-        volume = st.number_input("Volume (cm³)")
-        if st.button("Hitung"):
-            hasil = massa / volume if volume != 0 else 0
-            st.success(f"Massa Jenis: {hasil} g/cm³")
-
-    elif rumus == "Massa Mol":
-        massa = st.number_input("Massa Zat (gram)")
-        Mr = st.number_input("Massa Molekul Relatif (Mr)")
-        if st.button("Hitung"):
-            hasil = massa / Mr if Mr != 0 else 0
-            st.success(f"Mol: {hasil} mol")
-
-    elif rumus == "Konsentrasi Molar":
-        mol = st.number_input("Jumlah Mol (mol)")
-        volume_l = st.number_input("Volume (liter)")
-        if st.button("Hitung"):
-            hasil = mol / volume_l if volume_l != 0 else 0
-            st.success(f"Konsentrasi: {hasil} M")
-
-    elif rumus == "Konsentrasi Molal":
-        mol = st.number_input("Jumlah Mol Zat Terlarut (mol)")
-        massa_pelarut = st.number_input("Massa Pelarut (kg)")
-        if st.button("Hitung"):
-            hasil = mol / massa_pelarut if massa_pelarut != 0 else 0
-            st.success(f"Konsentrasi: {hasil} mol/kg")
-
-    elif rumus == "Hukum Avogadro":
-        V1 = st.number_input("Volume 1 (L)")
-        n1 = st.number_input("Mol 1 (mol)")
-        n2 = st.number_input("Mol 2 (mol)")
-        if st.button("Hitung"):
-            V2 = (n2 / n1) * V1 if n1 != 0 else 0
-            st.success(f"Volume 2: {V2} L")
-
-    elif rumus == "Hukum Boyle":
-        P1 = st.number_input("Tekanan 1 (atm)")
-        V1 = st.number_input("Volume 1 (L)")
-        P2 = st.number_input("Tekanan 2 (atm)")
-        if st.button("Hitung"):
-            V2 = (P1 * V1) / P2 if P2 != 0 else 0
-            st.success(f"Volume 2: {V2} L")
-
-    elif rumus == "Hukum Charles":
-        V1 = st.number_input("Volume 1 (L)")
-        T1 = st.number_input("Suhu 1 (K)")
-        T2 = st.number_input("Suhu 2 (K)")
-        if st.button("Hitung"):
-            V2 = (V1 * T2) / T1 if T1 != 0 else 0
-            st.success(f"Volume 2: {V2} L")
-
-    elif rumus == "Tekanan Gas Ideal":
-        n = st.number_input("Jumlah Mol (mol)")
-        T = st.number_input("Suhu (K)")
-        V = st.number_input("Volume (L)")
-        R = 0.0821  # Konstanta Gas Ideal
-        if st.button("Hitung"):
-            P = (n * R * T) / V if V != 0 else 0
-            st.success(f"Tekanan: {P} atm")
-
-    elif rumus == "Energi Ikatan":
-        jumlah_ikatan = st.number_input("Jumlah Ikatan")
-        energi_per_ikatan = st.number_input("Energi per Ikatan (kJ/mol)")
-        if st.button("Hitung"):
-            energi = jumlah_ikatan * energi_per_ikatan
-            st.success(f"Energi Total: {energi} kJ/mol")
-
-    elif rumus == "Persen Massa":
-        massa_zat = st.number_input("Massa Zat (gram)")
-        massa_larutan = st.number_input("Massa Larutan (gram)")
-        if st.button("Hitung"):
-            persen = (massa_zat / massa_larutan) * 100 if massa_larutan != 0 else 0
-            st.success(f"Persen Massa: {persen} %")
-            
-elif menu == "Soal-soal Kimia Dasar":
-    st.title("Soal-Soal Kimia Dasar")
-    st.subheader("Silakan pilih soal atau materi yang ingin diakses:")
-
-    pilihan_soal = st.selectbox("Pilih File:", [
-        "Latihan Soal kimia dasar mudah (Google Docs)",
-        "Latihan Soal kimia dasar 2025 (PDF)",
-        "Latihan Soal kimia (Google Drive)"
-    ])
-       
