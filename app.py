@@ -565,4 +565,3 @@ if __name__ == "__main__":
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
-    
