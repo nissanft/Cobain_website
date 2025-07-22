@@ -181,7 +181,7 @@ def get_category_color(category):
     return colors.get(category, '#424242')
 
 def periodic_table_view():
-    """Menampilkan tabel periodik dengan gaya tema gelap."""
+    """Menampilkan tabel periodik dengan gaya tema terang."""
     st.markdown("""
     <style>
         body {
