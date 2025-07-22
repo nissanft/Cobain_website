@@ -555,7 +555,6 @@ if _name_ == "_main_":
 
 # PENYESUAIAN: CSS untuk tema gelap solid dan watermark
     st.markdown(
-        """
         <style>
         .stApp {
             background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
