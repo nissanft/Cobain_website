@@ -552,3 +552,16 @@ def main():
     
 if _name_ == "_main_":
     main() 
+
+# PENYESUAIAN: CSS untuk tema gelap solid dan watermark
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+                        url('https://github.com/nissanft/Cobain_website/raw/main/Organic%20Chemistry%20Education%20Presentation%20in%20Blue%20Illustrative%20Style.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
