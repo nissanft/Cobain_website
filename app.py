@@ -549,5 +549,3 @@ def main():
         """,
         unsafe_allow_html=True
     )
-if _name_ == "_main_":
-    main() 
