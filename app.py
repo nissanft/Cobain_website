@@ -552,3 +552,17 @@ def main():
     
 if __name__ == "__main__":
     main()
+
+# PENYESUAIAN: CSS untuk tema gelap solid dan watermark
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+                        url('https://ibb.co/tP87xzxG');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    
